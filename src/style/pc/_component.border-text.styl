@@ -1,0 +1,16 @@
+borderText(borderWeight = 15, borderColor = #000, padding = 5)
+  &__inner
+    display: inline-block
+    position: relative
+    padding: 0 (padding)px
+    box-sizing: border-box
+    &:after
+      position: absolute
+      bottom: 0
+      left: -5px
+      content: ''
+      display: block
+      width: 100%
+      height: (borderWeight)px
+      background-color: borderColor
+      opacity: 0.1

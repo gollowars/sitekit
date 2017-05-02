@@ -1,0 +1,160 @@
+/* -----------------------------------------------------------------------------
+  HAMBURGER ICONS COMPONENT
+  
+----------------------------------------------------------------------------- */
+// vars
+$buttonWidth = 120px
+// The width of the button area
+$buttonHeight = 100px
+// The height of the button area
+$barThickness = 4px
+$barThicknessNegative = -4px
+// The thickness of the button bars
+$buttonPad = 40px
+// The left/right padding between button area and bars.
+$buttonBarSpace = 10px
+// The spacing between button bars
+$buttonTransistionDuration = 0.3s
+// The transition duration
+$barColor = #000
+$bgColor = transparent
+/**
+ * Toggle Switch Globals
+ *
+ * All switches should take on the class `c-hamburger` as well as their
+ * variant that will give them unique properties. This class is an overview
+ * class that acts as a reset for all versions of the icon.
+ */
+hamburger()
+  display: block
+  position: relative
+  overflow: hidden
+  margin: 0
+  padding: 0
+  width: $buttonWidth
+  height: $buttonHeight
+  font-size: 0
+  text-indent: -9999px
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+  box-shadow: none
+  border-radius: none
+  border: none
+  cursor: pointer
+  transition: background $buttonTransistionDuration
+  &:focus
+    outline: none
+  span
+    display: block
+    position: absolute
+    top: ($buttonHeight / 2 - $barThickness / 2)
+    left: $buttonPad
+    right: $buttonPad
+    height: $barThickness
+    background: $barColor
+  span::before,
+  span::after
+    position: absolute
+    display: block
+    left: 0
+    width: 100%
+    height: $barThickness
+    background-color: $barColor
+    content: ""
+  span::before
+    top: ($barThicknessNegative - $buttonBarSpace)
+  span::after
+    bottom: ($barThicknessNegative - $buttonBarSpace)
+
+  &--rot
+    background-color: $bgColor
+  &--rot span
+    transition: transform $buttonTransistionDuration
+  /* active state, i.e. menu open */
+  &--rot.is-active
+    background-color: $bgColor
+  &--rot.is-active span
+    transform: rotate(90deg)
+
+  &--htx
+    background-color: $bgColor
+  &--htx span
+    transition: background 0s $buttonTransistionDuration
+  &--htx span::before,
+  &--htx span::after
+    transition-duration: $buttonTransistionDuration, $buttonTransistionDuration
+    transition-delay: $buttonTransistionDuration, 0s
+  &--htx span::before
+    transition-property: top, transform
+  &--htx span::after
+    transition-property: bottom, transform
+  /* active state, i.e. menu open */
+  &--htx.is-active
+    background-color: $bgColor
+  &--htx.is-active span
+    background: none
+  &--htx.is-active span::before
+    top: 0
+    transform: rotate(45deg)
+  &--htx.is-active span::after
+    bottom: 0
+    transform: rotate(-45deg)
+  &--htx.is-active span::before,
+  &--htx.is-active span::after
+    transition-delay: 0s, $buttonTransistionDuration
+
+  &--htla
+    background-color: $bgColor
+  &--htla span
+    transition: transform $buttonTransistionDuration
+  &--htla span::before,
+  &--htla span::after
+  &--htla span::before
+    transform-origin: top right
+    transition: transform $buttonTransistionDuration, width $buttonTransistionDuration, top $buttonTransistionDuration
+  &--htla span::after
+    transform-origin: bottom right
+    transition: transform $buttonTransistionDuration, width $buttonTransistionDuration, bottom $buttonTransistionDuration
+  /* active state, i.e. menu open */
+  &--htla.is-active
+    background-color: $bgColor
+  &--htla.is-active span
+    transform: rotate(180deg)
+  &--htla.is-active span::before,
+  &--htla.is-active span::after
+    width: 50%
+  &--htla.is-active span::before
+    top: 0
+    transform: translateX($buttonWidth / 2 - $buttonPad + $barThickness) translateY($barThickness / 2) rotate(45deg)
+
+  &--htla.is-active span::after
+    bottom: 0
+    transform: translateX($buttonWidth / 2 - $buttonPad + $barThickness) translateY($barThicknessNegative / 2) rotate(-45deg)
+
+  &--htra
+    background-color: $bgColor
+  &--htra span
+    transition: transform $buttonTransistionDuration
+  &--htra span::before,
+  &--htra span::after
+  &--htra span::before
+    transform-origin: top left
+    transition: transform $buttonTransistionDuration, width $buttonTransistionDuration, top $buttonTransistionDuration
+  &--htra span::after
+    transform-origin: bottom left
+    transition: transform $buttonTransistionDuration, width $buttonTransistionDuration, bottom $buttonTransistionDuration
+  /* active state, i.e. menu open */
+  &--htra.is-active
+    background-color: $bgColor
+  &--htra.is-active span
+    transform: rotate(180deg)
+  &--htra.is-active span::before,
+  &--htra.is-active span::after
+    width: 50%
+  &--htra.is-active span::before
+    top: 0
+    transform: translateX($barThicknessNegative) translateY($barThickness / 2) rotate(-45deg)
+  &--htra.is-active span::after
+    bottom: 0
+    transform: translateX($barThicknessNegative) translateY($barThicknessNegative / 2) rotate(45deg)

@@ -1,0 +1,10 @@
+extends ../layout/sp/_layout.pug
+
+block pageTitleBlock
+  - pageTitle = data.meta.sitename
+
+block content
+  .container__inner
+
+block bottomjs 
+  script(src=path+"assets/js/sp__bundle.js")

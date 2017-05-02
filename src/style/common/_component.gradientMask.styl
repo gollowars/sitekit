@@ -1,0 +1,79 @@
+gradientMask(w,h,url,c1,c2,delay = 2s)
+  display: inline-block
+  text-align: center
+  width: (w)px
+  height: (h)px
+  background: linear-gradient(90deg, c1, c2, c1)
+  background-size: 300%
+  background-position: 300% 50%
+  mask-image: url(url)
+  mask-size: 100% 100%
+  animation: maskBtnAnim 5.0s ease delay infinite normal
+  transition: all
+
+@keyframes maskBtnAnim
+  0%
+    background-position: 300% 50%
+  100%
+    background-position:0% 50%
+
+
+gradientMaskSlant(w,h,url,c1,c2,delay = 2s)
+  display: inline-block
+  text-align: center
+  width: (w)px
+  height: (h)px
+  background: linear-gradient(45deg, c1, c2, c1)
+  background-size: 200%
+  background-position: 0% 50%
+  mask-image: url(url)
+  mask-size: 100% 100%
+  animation: maskBtnAnim 5.0s ease delay infinite normal
+  transition: all
+
+@keyframes maskBtnAnim
+  0%
+    background-position: 200% 50%
+  100%
+    background-position: 0% 50%
+
+
+gradationButtonStyle()
+  line-height: 90px
+  color: #fff
+  font-size: 28px
+  letter-spacing: .1em
+
+gradationButtonStylePC()
+  line-height: 52px
+  color: #fff
+  font-size: 14px
+  letter-spacing: .1em
+
+
+rainbowMask(w,h,url)
+  display: inline-block
+  text-align: center
+  width: (w)px
+  height: (h)px
+  background: linear-gradient(90deg, #2d887b, #c9802e, #af4e76, #2d887b, #c9802e, #af4e76, #af4e76, #c9802e,#2d887b)
+  background-size: 200%
+  mask-image: url(url)
+  mask-size: 100% 100%
+  animation: rainbowAnim .9s ease 0s infinite normal
+  transition: all
+
+
+@keyframes rainbowAnim
+  0%
+    opacity: 1.0
+    background-position: 0% 50%
+    transform: scale(1.0)
+  50%
+    opacity: 0.4
+    transform: scale(1.01)
+  100%
+    opacity: 1.0
+    background-position: 200% 50%
+    transform: scale(1.0)
+    

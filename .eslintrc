@@ -1,0 +1,39 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "rules": {
+    "strict": 2,
+    "no-console": "warn",
+    "no-unused-vars": "warn"
+  },  
+  "extends": ["eslint:recommended"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "globals": {
+    "$": false,
+    "Rx": false,
+    "PIXI": false,
+    "dat": false,
+    "courseId": false,
+    "Logger": false,
+    "Howl": false,
+    "Howler": false,
+    "YT":false,
+    "Cookies": false,
+    "TWEEN": false,
+    "Modernizr": false,
+    "_": false,
+    "Snap": false,
+    "mina": false,
+    "platform": false
+  }
+}

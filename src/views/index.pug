@@ -1,0 +1,15 @@
+extends ./layout/_layout.pug
+
+block pageTitleBlock
+  - pageTitle = data.meta.sitename
+
+block pageTitleBlock
+  // - pageTitle = data.index.title + " | " + data.meta.sitename
+  - pageTitle = data.meta.sitename
+
+block content
+  .container__inner
+
+
+block bottomjs 
+  script(src=path+"assets/js/bundle.js")

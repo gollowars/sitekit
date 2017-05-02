@@ -1,0 +1,19 @@
+webfont(family, file)
+  font-family family
+  font-style normal
+  font-weight: weight
+  src local(family + ' Regular'),
+    url(file + ".ttf") format('truetype'),
+    url(file + ".otf") format('opentype'),
+    url(file + ".eot") format('embedded-opentype'),
+    url(file + ".eot?#iefix") format('embedded-opentype'),
+    url(file + ".woff") format('woff'),
+    url(file + ".svg") format('svg')
+
+@font-face
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Noto Sans CJK JP"),url(//fonts.gstatic.com/ea/notosansjp/v5/NotoSansJP-Regular.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosansjp/v5/NotoSansJP-Regular.woff) format('woff'),url(//fonts.gstatic.com/ea/notosansjp/v5/NotoSansJP-Regular.otf) format('opentype')
+
+@import url('https://fonts.googleapis.com/css?family=Oswald')
