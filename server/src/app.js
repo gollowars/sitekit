@@ -14,7 +14,7 @@ let SERVER_PORT = process.env.PORT || 5101
 app.set('port',process.env.PORT || SERVER_PORT)
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(session({secret: ""}))
+app.use(session({secret: "secret seccion"}))
 app.use(cookieParser())
 
 app.use(function(req, res, next) {
