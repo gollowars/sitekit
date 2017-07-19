@@ -7,6 +7,17 @@ import App from './site/App'
 import { Common } from './page/Common'
 import { Top } from './page/top/Top'
 
+// log
+const Logger = require('debug')
+const debug = Logger('main')
+
+// log
+if(WEBPACK_DEFINITION.log == false){
+  Logger.enable("")
+}else{
+  Logger.enable("*,-engine.io-client:*,-socket.io-client:*,-socket.io-client,-socket.io-parser")
+}
+
 let nextPageLink = ''
 class SiteManager {
   constructor(){
@@ -14,14 +25,6 @@ class SiteManager {
     this.addEvent()
   }
   init(){
-    // Logger
-    Logger.useDefaults()
-
-    if(!Config.logOn) {
-      Logger.setLevel(Logger.WARN)
-      Logger.setLevel(Logger.OFF)
-    }
-
     this.commonAction = new Common()
     this.pageMachine = new PageMachine({
       'top': new Top()
@@ -29,7 +32,7 @@ class SiteManager {
     })
 
     this.router = new Router({
-      "/sp/":()=>{
+      "/":()=>{
         this.pageMachine.changePage('top')
       }
       // "/sp/graph/":()=>{
@@ -40,7 +43,7 @@ class SiteManager {
 
   addEvent(){
     $(window).on('pageshow',()=>{
-      Logger.debug('pageshow')
+      debug('pageshow')
       this.commonAction.run()
       this.router.action()
 

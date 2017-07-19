@@ -34,6 +34,7 @@
     "_": false,
     "Snap": false,
     "mina": false,
-    "platform": false
+    "platform": false,
+    "WEBPACK_DEFINITION": false
   }
 }

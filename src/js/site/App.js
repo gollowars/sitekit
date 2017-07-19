@@ -1,4 +1,6 @@
 import Config from "../Config"
+const Logger = require('debug')
+const debug = Logger('App')
 
 class App {
 
@@ -16,7 +18,7 @@ class App {
       this.currentPath = this.currentPath.replace(Config.devPath,"").replace(" ")
       App.devFlag = true
     }
-    Logger.debug("this.currentPath : ",this.currentPath)
+    debug("this.currentPath : ",this.currentPath)
   }
 }
 

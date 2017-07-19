@@ -1,4 +1,6 @@
 import { TweenMax, Expo } from 'gsap'
+const Logger = require('debug')
+const debug = Logger('main')
 
 export class Loading {
   constructor() {
@@ -13,7 +15,7 @@ export class Loading {
   }
 
   init(){
-    Logger.debug('loading::init')
+    debug('loading::init')
     this.createElement()
   }
 

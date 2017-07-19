@@ -1,3 +1,6 @@
+const Logger = require('debug')
+const debug = Logger('SlideMenu')
+
 function SlideMenu() {
 
   // nav
@@ -19,8 +22,7 @@ function SlideMenu() {
   }
 
   function init(){
-    console.log('SlideMenu::initialize')
-
+    debug('SlideMenu::initialize')
   }
 
   SlideMenuObj.prototype.open = function(){

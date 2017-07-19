@@ -1,8 +1,10 @@
 import App from './App'
+const Logger = require('debug')
+const debug = Logger('PageMachine')
 
 export class PageMachine {
   constructor(pages){
-    Logger.debug('PageMachine.init')
+    debug('PageMachine.init')
 
     this.pages = pages
     this.currentPage = null
@@ -10,7 +12,7 @@ export class PageMachine {
   }
 
   init(){
-    Logger.debug('PageMachine.init')
+    debug('PageMachine.init')
   }
 
   changePage(pageName){

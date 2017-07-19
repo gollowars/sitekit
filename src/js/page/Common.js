@@ -1,16 +1,18 @@
 import App from '../site/App'
 import { Loading } from '../site/loading/Loading'
 import SlideMenu from '../site/slidemenu/SlideMenu'
+const Logger = require('debug')
+const debug = Logger('Common')
 
 export class Common {
   constructor() {
-    Logger.debug("Common.intialize");
+    debug("Common.intialize");
 
     this.addEvent()
   }
 
   run() {
-    Logger.debug("Common.run");
+    debug("Common.run");
 
     this.menu = new SlideMenu('#gnav')
     this.loading = new Loading()
@@ -43,7 +45,7 @@ export class Common {
   }
 
   pageTranslateStart(){
-    Logger.debug("Common.pageTranslateStart");
+    debug("Common.pageTranslateStart");
     let d = $.Deferred()
 
     this.loading.showStart()
@@ -55,7 +57,7 @@ export class Common {
   }
 
   pageTranslateEnd(){
-    Logger.debug("Common.pageTranslateEnd");
+    debug("Common.pageTranslateEnd");
     let d = $.Deferred()
 
     this.loading.showEnd()

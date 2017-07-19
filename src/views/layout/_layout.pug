@@ -36,8 +36,8 @@ html(lang = data.meta.lang)
     link(rel="shortcut icon",href=path+"assets/images/favicon.ico",type="image/x-icon")
     script(src=path+"assets/js/platform.js")
     script(src=path+"assets/js/detectpc.js")
-    script(src=path+"assets/js/modernizr.js")
-    link(href=path+"assets/css/main.css",rel="stylesheet")
+    script(src=path+"assets/js/modernizr.js?v="+version,rel="stylesheet")
+    link(href=path+"assets/css/main.css?v="+version,rel="stylesheet")
     block headerCss
 
     meta(id="path", name="path", content=path)
@@ -55,7 +55,7 @@ html(lang = data.meta.lang)
 
     include _footer
     #loading
-    script(src=path+"assets/js/lib.js")
+    script(src=path+"assets/js/lib.js?v="+version)
     block bottomjs
     
     //- GA
