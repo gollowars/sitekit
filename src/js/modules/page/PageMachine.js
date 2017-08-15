@@ -1,4 +1,4 @@
-import App from './App'
+import App from '../App'
 const Logger = require('debug')
 const debug = Logger('PageMachine')
 

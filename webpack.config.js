@@ -1,17 +1,16 @@
 let path = require('path')
 let env = require(path.join(__dirname,'./gulp-env.js'))
-let watchFlag = (env.env == 'local') ? true : false
 const webpack = require("webpack")
 
-
 module.exports = {
-  watch: watchFlag,
+  watch: false,
   entry: {
     bundle: ["babel-polyfill", "./src/js/main.js"]
     // sp__bundle: "./src/js/sp__main.js",
     // detectpc: "./src/js/detectpc.js",
     // detectsp: "./src/js/detectsp.js"
   },
+  cache: true,
   stats: { colors: true },
   output: {
     filename: '[name].js'
@@ -28,5 +27,5 @@ module.exports = {
       BUILD_VERSION: JSON.stringify(env.VERSION)
     })
   ],
-  devtool: 'inline-source-map'
+  devtool: '#inline-source-map'
 }

@@ -1,6 +1,6 @@
-import App from '../site/App'
-import { Loading } from '../site/loading/Loading'
-import SlideMenu from '../site/slidemenu/SlideMenu'
+import App from '../App'
+import { Loading } from '../loading/Loading'
+import SlideMenu from '../slidemenu/SlideMenu'
 const Logger = require('debug')
 const debug = Logger('Common')
 

@@ -1,11 +1,10 @@
-import Config from './Config'
-import { Router } from './site/Router'
-import { PageMachine } from './site/PageMachine'
-import App from './site/App'
+import { Router } from './modules/Router'
+import { PageMachine } from './modules/page/PageMachine'
+import App from './modules/App'
 
 // page
-import { Common } from './page/Common'
-import { Top } from './page/top/Top'
+import { Common } from './modules/page/Common'
+import { Top } from './modules/page/top/Top'
 
 // log
 const Logger = require('debug')

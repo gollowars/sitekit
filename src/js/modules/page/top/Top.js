@@ -1,5 +1,5 @@
-import { Page } from '../../site/Page'
-import App from '../../site/App'
+import { Page } from '../Page'
+import App from '../../App'
 
 const Logger = require('debug')
 const debug = Logger('Top')
