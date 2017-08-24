@@ -6,9 +6,6 @@ module.exports = {
   watch: false,
   entry: {
     bundle: ["./src/js/main.js"]
-    // sp__bundle: "./src/js/sp__main.js",
-    // detectpc: "./src/js/detectpc.js",
-    // detectsp: "./src/js/detectsp.js"
   },
   cache: true,
   stats: { colors: true },
@@ -63,9 +60,6 @@ module.exports = {
     ]
   },
   plugins: [
-    // new webpack.ProvidePlugin({
-    //   'GyroNorm':path.join(__dirname, './node_modules/gyronorm/dist/gyronorm.complete.min.js'),
-    // }),
     new webpack.optimize.CommonsChunkPlugin({
       minChunks: Infinity,
       name: 'bundle'
