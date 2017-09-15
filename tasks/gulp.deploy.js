@@ -7,24 +7,24 @@ import s3 from 's3'
 let config = require(path.join(__dirname,"../deploy.json"))
 const distRoot = path.join(__dirname,"../public/")
 
-gulp.task('deploy_dev', () => {
-  return gulp.src(distRoot)
-    .pipe($.rsync({
-      root: distRoot,
-      hostname: config.rsync.dst.host,
-      destination: config.rsync.dst.path ,
-      progress: true,
-      recursive: true,
-      compress: true,
-      clean: true,
-      exclude: [
-        '.git',
-        '.gitignore',
-        '.DS_Store',
-        'node_modules'
-      ]
-    }))
-})
+// gulp.task('deploy_dev', () => {
+//   return gulp.src(distRoot)
+//     .pipe($.rsync({
+//       root: distRoot,
+//       hostname: config.rsync.dst.host,
+//       destination: config.rsync.dst.path ,
+//       progress: true,
+//       recursive: true,
+//       compress: true,
+//       clean: true,
+//       exclude: [
+//         '.git',
+//         '.gitignore',
+//         '.DS_Store',
+//         'node_modules'
+//       ]
+//     }))
+// })
 
 
 gulp.task('s3-sync',() => {
@@ -42,17 +42,16 @@ gulp.task('s3-sync',() => {
       // See: http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Config.html#constructor-property 
     },
   })
-  console.log('client:',client)
   // upload
   let params = {
-    localFile: path.join(__dirname,"../public/assets/images/profile.png"),
+    localDir: path.join(__dirname,"../public"),
     s3Params: {
       Bucket: config.s3.dst.bucket,
-      Key: "profile.png"
+      Prefix: ""
     }
   }
 
-  let uploader = client.uploadFile(params)
+  let uploader = client.uploadDir(params)
   uploader.on('error', function(err) {
     console.error("unable to upload:", err.stack)
   })
