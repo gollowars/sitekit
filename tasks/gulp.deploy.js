@@ -7,24 +7,24 @@ import s3 from 's3'
 let config = require(path.join(__dirname,"../deploy.json"))
 const distRoot = path.join(__dirname,"../public/")
 
-// gulp.task('deploy_dev', () => {
-//   return gulp.src(distRoot)
-//     .pipe($.rsync({
-//       root: distRoot,
-//       hostname: config.rsync.dst.host,
-//       destination: config.rsync.dst.path ,
-//       progress: true,
-//       recursive: true,
-//       compress: true,
-//       clean: true,
-//       exclude: [
-//         '.git',
-//         '.gitignore',
-//         '.DS_Store',
-//         'node_modules'
-//       ]
-//     }))
-// })
+gulp.task('deploy_dev', () => {
+  return gulp.src(distRoot)
+    .pipe($.rsync({
+      root: distRoot,
+      hostname: config.rsync.dst.host,
+      destination: config.rsync.dst.path ,
+      progress: true,
+      recursive: true,
+      compress: true,
+      clean: true,
+      exclude: [
+        '.git',
+        '.gitignore',
+        '.DS_Store',
+        'node_modules'
+      ]
+    }))
+})
 
 
 gulp.task('s3-sync',() => {
