@@ -4,7 +4,7 @@ const $ = gulpLoadPlugins({pattern: ['gulp-*', 'gulp.*', '@*/gulp{-,.}*']})
 
 const bs = require("browser-sync").create()
 const bsConf = require('../bs-config')
-gulp.task('server',function(){
+gulp.task('browserSync',function(){
   bs.init(bsConf)
   return
 })

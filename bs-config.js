@@ -13,11 +13,8 @@
  |
  */
 module.exports = {
-  ui: {
-    port: 3001
-  },
-  server: {
-    baseDir: './public/'
-  },
+  proxy: "http://localhost:5000",
+  files: ["./public/**/*.*"],
+  port: "4000",
   open: false
 }

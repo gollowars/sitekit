@@ -3,7 +3,7 @@ let env = require(path.join(__dirname,'./gulp-env.js'))
 const webpack = require("webpack")
 
 module.exports = {
-  watch: false,
+  watch: true,
   entry: {
     bundle: ["./src/js/main.js"]
   },

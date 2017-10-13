@@ -7,9 +7,9 @@ let app = express()
 let bodyParser = require('body-parser')
 let url = require('url')
 let path = require('path')
-let debug = require('debug')('api')
-let SERVER_PORT = process.env.PORT || 5101
-
+let debug = require('debug')('socket')
+let SERVER_PORT = process.env.PORT || 5000
+let fs = require('fs-extra')
 
 app.set('port',process.env.PORT || SERVER_PORT)
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -19,44 +19,32 @@ app.use(cookieParser())
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Authorization, Content-Type, Accept");
-  next();
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Authorization, Content-Type, Accept")
+  next()
 })
 
-
-app.get('/',function(req,res){
-  let urlParts = url.parse(req.url,true)
-  let query = urlParts.query
-  res.send('ok')
-})
-
-app.get('/api/params', function(req, res){
-
-
-  res.writeHead(200, { 'Content-Type':  "application/json; charset=utf-8" });
-  let s0 = [Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10]
-  let s1 = [Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10]
-  let s2 = [Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10]
-  let s3 = [Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10]
-  let s4 = [Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10]
-  let s5 = [Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10,Math.ceil(Math.random()*10)/10]
-  res.end(JSON.stringify({"params":[{"type":0,"scores":s0},{"type":1,"scores":s1},{"type":2,"scores":s2},{"type":3,"scores":s3},{"type":4,"scores":s4},{"type":5,"scores":s5}]}));
-})
-
-app.post('/api/book', function(req, res){
-  let imgurl = ''
-  if(req.headers.host.indexOf('localhost') != -1){
-    imgurl = req.protocol + '://' + req.headers.host.split(":")[0] + ":3000/assets/images/dummy.jpg"
-  }else{
-    imgurl = req.protocol + '://' + req.headers.host.split(":")[0] + "/assets/images/dummy.jpg"
-  }
-  res.writeHead(200, { 'Content-Type':  "application/json; charset=utf-8" });
-  res.end(JSON.stringify({"title":"sample title","author":"","url": imgurl,"area":"setagaya ku","link":"http://dummylink.jp"}));
-})
-
-
+app.use(express.static(path.join(__dirname,'../../public/')))
 
 let PORT = app.get('port')
-app.listen(PORT, function() {
+let server = app.listen(PORT, function() {
   debug('Express server listening on http://localhost:' + PORT)
 })
+
+//////////////////////
+// socket
+let io = require('socket.io')(server)
+io.sockets.on('connection', function(socket) {
+  debug('a user connect!!')
+
+  socket.on('fuck', function(o){
+    debug('Get fuck :',o)
+  })
+
+  socket.on('disconnect', function(){
+    debug('user disconnected')
+  })
+})
+
+
+
+

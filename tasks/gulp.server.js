@@ -3,7 +3,7 @@ import gulpLoadPlugins from 'gulp-load-plugins'
 const $ = gulpLoadPlugins({pattern: ['gulp-*', 'gulp.*', '@*/gulp{-,.}*']})
 import path from 'path'
 
-gulp.task('apitask',function(cb){
+gulp.task('server',function(cb){
   let started = false
   return $.nodemon({
     script: path.join(__dirname,'../server/src/app.js')

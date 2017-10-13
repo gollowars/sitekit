@@ -16,20 +16,20 @@ require('./tasks/gulp.deploy')
 
 ////////////////
 // api server
-require('./tasks/gulp.apiTask')
+require('./tasks/gulp.server')
 
 
 gulp.task('watch', function(){
   gulp.watch(['./src/views/**/*.pug','./src/data/**/*.y{,a}ml'], ['views'])
   gulp.watch('./src/style/**/*.styl', ['style'])
   gulp.watch('./public/**/*', ['reload'])
-  gulp.watch('./src/js/**/*', ['webpack'])
+  // gulp.watch('./src/js/**/*', ['webpack'])
 })
 
 gulp.task('default', function(){
   runSequcence(
     ['views','style','assets','concat-js-lib','image'],
-    ['webpack','server','watch']
+    ['webpack','server','browserSync','watch']
   )
 })
 
@@ -42,4 +42,3 @@ gulp.task('build',['clean'],function(){
     ['views','style','assets','concat-js-lib','image','webpack']
   )
 })
-
